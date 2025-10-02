@@ -1,0 +1,4 @@
+tensorflow==2.15.0
+scikit-learn==1.4.2
+numpy==1.26.4
+tensorflowjs==4.19.0

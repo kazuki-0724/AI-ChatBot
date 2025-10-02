@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDE/Editor specific
+.vscode/
+.idea/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Generated model (TensorFlow SavedModel format)
+# This is large and can be regenerated from the source script.
+public/model/saved_model/
