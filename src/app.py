@@ -36,7 +36,7 @@ question_vectors = model.encode(questions, convert_to_tensor=True)
 
 # --- [確認用] ベクトルの次元数を出力 ---
 # vector_dimension = question_vectors.shape[1]
-# print(f"AIモデルが生成するベクトルの次元数: {vector_dimension}")
+# print(f"AIモデルが生成するベクトルの次元数: {vector_dimension}") # 768
 # ------------------------------------
 
 # --- Flaskアプリケーションのセットアップ ---
