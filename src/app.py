@@ -3,16 +3,15 @@ from pathlib import Path
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from sentence_transformers import SentenceTransformer, util
-from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
 # テストページ：http://127.0.0.1:5000/
 
 # --- AIモデルの準備 ---
 
-# 1. 日本語対応の事前学習済みモデルをロード
-#    初回実行時にモデルのダウンロードが自動的に行われます。
-model = SentenceTransformer('cl-tohoku/bert-base-japanese-whole-word-masking')
+# 1. 日本語対応の事前学習済みモデルをロード 
+# app.py での読み込み例
+model = SentenceTransformer('./models/fine-tuned-faq-bot')
 
 # スクリプト自身の場所を基準に、ファイルの絶対パスを解決
 BASE_DIR = Path(__file__).resolve().parent
@@ -81,7 +80,7 @@ def chat():
     else:
         bot_reply = "申し訳ありません、よく分かりませんでした。別の言葉で質問していただけますか？"
 
-    return jsonify({'reply': bot_reply})
+    return jsonify({'reply': f"【{max_similarity.__round__(2)}】 {bot_reply}"})
 
 if __name__ == '__main__':
     # 開発用サーバーを起動
